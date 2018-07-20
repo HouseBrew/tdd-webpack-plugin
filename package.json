@@ -4,8 +4,7 @@
   "description": "run cypress test after webpack tasks",
   "main": "dist/index.js",
   "scripts": {
-    "build": "webpack webpack.conf.js",
-    "patch-publish": "npm run build && npm version patch && npm publish"
+    "build": "webpack --config webpack.conf.js"
   },
   "repository": {
     "type": "git",
