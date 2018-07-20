@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "downlevelIteration": true,
+    "target": "esnext",
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "rootDir": ".",
+    "sourceMap": true,
+    "strictPropertyInitialization": false,
+    "lib": [
+      "dom",
+      "es2017"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./typings"
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "*"
+      ]
+    }
+  }
+}

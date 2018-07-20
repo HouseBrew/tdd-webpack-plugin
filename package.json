@@ -1,0 +1,42 @@
+{
+  "name": "cypress-webpack-plugin",
+  "version": "0.0.1",
+  "description": "run cypress test after webpack tasks",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "webpack webpack.conf.js",
+    "patch-publish": "npm run build && npm version patch && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@housebrew.github.com:HouseBrew/cypress-webpack-plugin.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/webpack": "^4.4.7",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "ts-loader": "^4.4.2",
+    "ts-node": "^7.0.0",
+    "tslint": "^5.11.0",
+    "tslint-loader": "^3.6.0",
+    "typescript": "^2.9.2",
+    "webpack": "^4.x",
+    "webpack-cli": "^3.x"
+  },
+  "keywords": [
+    "cypress",
+    "webpack",
+    "CI",
+    "e2e",
+    "end-to-end",
+    "test-driven",
+    "development",
+    "tdd",
+    "unit",
+    "test"
+  ],
+  "author": "Ho Chi Ho",
+  "license": "ISC"
+}

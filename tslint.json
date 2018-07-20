@@ -1,0 +1,22 @@
+{
+  "extends": "tslint:recommended",
+  "rulesDirectory": ["./"],
+  "jsRules": {
+      "semicolon": [true, "never"],
+      "trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
+      "max-line-length": [false]
+  },
+  "rules": {
+    "max-line-length": [false],
+    "quotemark": [true, "single", "avoid-escape", "avoid-template"],
+    "semicolon": [true, "never"],
+    "new-parens": true,
+    "no-arg": true,
+    "no-console": false,
+    "no-bitwise": true,
+    "no-conditional-assignment": true,
+    "no-consecutive-blank-lines": false,
+    "trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
+    "object-literal-sort-keys": false
+  }
+}
