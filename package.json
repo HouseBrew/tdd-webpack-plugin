@@ -1,6 +1,6 @@
 {
   "name": "cypress-webpack-plugin",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "run cypress test after webpack tasks",
   "main": "dist/main.js",
   "scripts": {
