@@ -3,6 +3,7 @@
   "version": "0.0.4",
   "description": "run cypress test after webpack tasks",
   "main": "dist/main.js",
+  "module": "src/index.js",
   "scripts": {
     "build": "webpack --config webpack.conf.js"
   },

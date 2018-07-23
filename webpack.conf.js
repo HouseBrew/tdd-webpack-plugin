@@ -44,6 +44,13 @@ module.exports = {
     minimize: false
   },
   plugins: [],
+  externals: {
+    cypress: {
+      commonjs: 'cypress',
+      commonjs2: 'cypress',
+      amd: 'cypress'
+    }
+  },
   resolve: {
     extensions: [".ts"]
   }
