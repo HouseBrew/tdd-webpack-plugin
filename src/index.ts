@@ -1,22 +1,57 @@
-export class CypressWebpackPlugin {
-  public options: {}
+import cypress from 'cypress'
+import de from 'directory-exists'
+import {getParentDirectories} from './utils'
+
+class CypressWebpackPlugin {
+  public options: { base: string, testFolder: string, bin: string, cypress: any, matchSpecs: string } = {
+    base: '/',
+    testFolder: 'test',
+    bin: 'node_modules/cypress/bin/cypress',
+    cypress: {},
+    matchSpecs: '**.spec.js'
+  }
+  public prevTimestamps: Map<string, number>
+  public startTime: number
   public constructor(options) {
-    this.options = options
+    if (typeof options !== 'undefined') {
+      this.options = options
+    }
+    this.startTime = Date.now()
+    this.prevTimestamps = new Map()
   }
   // Define the `apply` method
   public apply(compiler) {
-    // Specify the event hook to attach to
-    compiler.hooks.compile.tapAsync(
-      'done',
-      (compilation, callback) => {
-        console.log('compilation is done!')
-        console.log('Here’s the `compilation` object which represents a single build of assets:', compilation)
+    compiler.hooks.emit.tap('CypressWebpackPlugin', (compilation) => {
+      const changedFiles: string[] = []
+      compilation.fileTimestamps.forEach((value, key) => {
+        if ( (this.prevTimestamps.get(key) || this.startTime) < value) {
+          changedFiles.push(key)
+        }
+      })
+      this.prevTimestamps = compilation.fileTimestamps
 
-        // Manipulate the build using the plugin API provided by webpack
-        // compilation.addModule(/* ... */);
+      changedFiles.forEach((path) => {
+        const dis = getParentDirectories(path, this.options.base)
+        dis.forEach((di) => {
+          const testFolderPath: string = `${di}/${this.options.testFolder}`
+          const testFolderExist: boolean = de.sync(testFolderPath)
+          if (testFolderExist) {
 
-        callback()
-      }
-    )
+            cypress.run({
+              ...this.options.cypress,
+              specs: `${testFolderPath}/${this.options.matchSpecs}`
+            })
+            .then((results) => {
+              console.log(results)
+            })
+            .catch((err) => {
+              console.error(err)
+            })
+
+          }
+        })
+      })
+    })
   }
 }
+export {CypressWebpackPlugin}

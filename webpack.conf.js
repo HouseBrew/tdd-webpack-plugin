@@ -6,6 +6,11 @@ module.exports = {
   mode: 'production',
   devtool: false,
   target: "node", // Node.js via require
+  output: {
+    // library: 'default',
+    libraryTarget: "commonjs2",
+    libraryExport: "CypressWebpackPlugin"
+  },
   module: {
     rules: [
       {

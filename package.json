@@ -1,8 +1,8 @@
 {
   "name": "cypress-webpack-plugin",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "run cypress test after webpack tasks",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "scripts": {
     "build": "webpack --config webpack.conf.js"
   },
@@ -10,7 +10,10 @@
     "type": "git",
     "url": "git@housebrew.github.com:HouseBrew/cypress-webpack-plugin.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "cypress": "^3.x",
+    "directory-exists": "^2.0.0"
+  },
   "devDependencies": {
     "@types/webpack": "^4.4.7",
     "babel-core": "^6.26.3",
