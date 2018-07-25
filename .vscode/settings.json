@@ -1,0 +1,4 @@
+{
+  "tslint.configFile": "/Users/hochiho/cypress-webpack-plugin/tslint.json",
+  "tslint.nodePath": "Users/hochiho/cypress-webpack-plugin/node_modules/tslint/bin/tslint",
+}

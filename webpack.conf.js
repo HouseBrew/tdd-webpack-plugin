@@ -1,15 +1,14 @@
 const path = require('path')
 
 const resolve = (rel) => path.resolve(__dirname, rel)
-
 module.exports = {
   mode: 'production',
   devtool: false,
   target: "node", // Node.js via require
   output: {
     // library: 'default',
-    libraryTarget: "commonjs2",
-    libraryExport: "CypressWebpackPlugin"
+    libraryTarget: "commonjs2"
+    // libraryExport: "CypressWebpackPlugin"
   },
   module: {
     rules: [
@@ -46,9 +45,19 @@ module.exports = {
   plugins: [],
   externals: {
     cypress: {
-      commonjs: 'cypress',
+      // commonjs: 'cypress',
       commonjs2: 'cypress',
-      amd: 'cypress'
+      // amd: 'cypress'
+    },
+    relative: {
+      // commonjs: 'relative',
+      commonjs2: 'relative',
+      // amd: 'relative'
+    },
+    "directory-exists": {
+      // commonjs: 'directory-exists',
+      commonjs2: 'directory-exists',
+      // amd: 'directory-exists'
     }
   },
   resolve: {

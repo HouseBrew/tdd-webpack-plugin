@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "cypress": "^3.x",
-    "directory-exists": "^2.0.0"
+    "directory-exists": "^2.x",
+    "relative": "^3.x"
   },
   "devDependencies": {
     "@types/webpack": "^4.4.7",

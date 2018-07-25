@@ -1,17 +1,11 @@
 import path from 'path'
 
-const getParentDirectories = (file: string, until: string = '/'): string[] => {
-  if (!file) {
-    return []
-  }
-  const result: string[] = []
+function* getParentDirectories(file: string, until: string = '/') {
   let cd: string = file
-  console.log(cd)
   while (cd.includes(until) && cd !== '/' && cd !== until) {
     cd = path.dirname(cd)
-    result.push(cd)
+    yield cd
   }
-  return result
 }
 
 export {getParentDirectories}
