@@ -19,7 +19,7 @@ It will help you, once changed src/modules/someModule/index.js, runs all the tes
 
 Installation
 ============
-> $ npm install --save-dev tdd-webpack-plugin
+        > $ npm install --save-dev tdd-webpack-plugin
 
 In webpack config file, extend the TestDrivenDevPlugin class, provide a test function.
 
@@ -27,44 +27,44 @@ The test function is call when webpack emit assets (https://webpack.js.org/api/c
 
 The following is the implementation of tdd webpack plugin integrated with cypress (https://www.cypress.io/)
 
-> webpack.dev.conf.js
-> 
-> const tdd = require('tdd-webpack-plugin')
-> const cypress = require('cypress')
-> 
-> class CypressTDDPlugin extends tdd.TestDrivenDevPlugin {
->   test(specs) {
->     // specs is an iterator
->     // options accessible through this.options
->     let specString = [...specs].join(',')
->     if (!specString) {
->       specString = `**/${this.options.matchSpecs}`
->     }
->     cypress.run({
->       reporter: 'min',
->       config: {
->         baseUrl: this.options.baseUrl,
->         chromeWebSecurity: false,
->         video: false,
->         modifyObstructiveCode: false
->       },
->       spec: specString
->     })
->   }
-> }
->
+        > webpack.dev.conf.js
+        > 
+        > const tdd = require('tdd-webpack-plugin')
+        > const cypress = require('cypress')
+        > 
+        > class CypressTDDPlugin extends tdd.TestDrivenDevPlugin {
+        >   test(specs) {
+        >     // specs is an iterator
+        >     // options accessible through this.options
+        >     let specString = [...specs].join(',')
+        >     if (!specString) {
+        >       specString = `**/${this.options.matchSpecs}`
+        >     }
+        >     cypress.run({
+        >       reporter: 'min',
+        >       config: {
+        >         baseUrl: this.options.baseUrl,
+        >         chromeWebSecurity: false,
+        >         video: false,
+        >         modifyObstructiveCode: false
+        >       },
+        >       spec: specString
+        >     })
+        >   }
+        > }
+        >
 
 Under plugins options, add the instance
 
-> plugins: [
->   ........
->   new CypressTDDPlugin({
->     base: resolve('./src'),
->     baseUrl: 'http://localhost:8080',
->     testFolder: 'test',
->     matchSpecs: '*.spec.js'
->   })
-> ]
+        > plugins: [
+        >   ........
+        >   new CypressTDDPlugin({
+        >     base: resolve('./src'),
+        >     baseUrl: 'http://localhost:8080',
+        >     testFolder: 'test',
+        >     matchSpecs: '*.spec.js'
+        >   })
+        > ]
 
 
 Configuration
@@ -75,8 +75,14 @@ Configuration
     </tr>
     <tr>
       <td>base</td><td>string</td><td>'/'</td><td>project root directory</td>
+    </tr>
+    <tr>
       <td>testFolder</td><td>string</td><td>'test'</td><td>test folder</td>
+    </tr>
+    <tr>
       <td>matchSpecs</td><td>string</td><td>'*.spec.js'</td><td>string to match specs</td>
+    </tr>
+    <tr>
       <td>baseUrl</td><td>string</td><td>'http://localhost:8080'</td><td>dev server url</td>
     </tr>
 </table>
