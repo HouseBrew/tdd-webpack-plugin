@@ -165,9 +165,6 @@ class TestDrivenDevPlugin_TestDrivenDevPlugin {
     apply(compiler) {
         compiler.hooks.emit.tap('CypressWebpackPlugin', (compilation) => {
             const changedFiles = this.getChangedFiles(compilation.fileTimestamps);
-            // if (!changedFiles.length) {
-            //   this.test()
-            // }
             const specs = this.getSpecs(changedFiles);
             this.test(specs);
             this.prevTimestamps = compilation.fileTimestamps;
@@ -188,6 +185,7 @@ class TestDrivenDevPlugin_TestDrivenDevPlugin {
                 if (testFolderExist) {
                     const match = `${testFolderPath}/${this.options.matchSpecs}`;
                     yield external_commonjs2_relative_default()(this.options.base, match);
+                    break; // only test the nearest parent's test folder
                 }
             }
         }
@@ -210,7 +208,9 @@ class CypressTDDPlugin_CypressTDDPlugin extends src_TestDrivenDevPlugin {
             reporter: 'min',
             config: {
                 baseUrl: this.options.baseUrl,
-                chromeWebSecurity: false
+                chromeWebSecurity: false,
+                video: false,
+                modifyObstructiveCode: false
             },
             spec: specString
         });
