@@ -4,15 +4,15 @@ Introduction
 ============
 This plugin assume your project is built on the following structure.
 
-> - yourProjectRoot/
->   - src/
->     - index.js
->     - modules/
->       - someModule/
->         - test/
->         - components/
->           - index.js
->   - test
+        - yourProjectRoot/
+          - src/
+            - index.js
+            - modules/
+              - someModule/
+                - test/
+                - components/
+                  - index.js
+          - test
 
 It will help you, once changed src/modules/someModule/index.js, runs all the tests under the same parent tree, i.e. src/modules/someModule/test
 
@@ -27,44 +27,44 @@ The test function is call when webpack emit assets (https://webpack.js.org/api/c
 
 The following is the implementation of tdd webpack plugin integrated with cypress (https://www.cypress.io/)
 
-        > webpack.dev.conf.js
-        > 
-        > const tdd = require('tdd-webpack-plugin')
-        > const cypress = require('cypress')
-        > 
-        > class CypressTDDPlugin extends tdd.TestDrivenDevPlugin {
-        >   test(specs) {
-        >     // specs is an iterator
-        >     // options accessible through this.options
-        >     let specString = [...specs].join(',')
-        >     if (!specString) {
-        >       specString = `**/${this.options.matchSpecs}`
-        >     }
-        >     cypress.run({
-        >       reporter: 'min',
-        >       config: {
-        >         baseUrl: this.options.baseUrl,
-        >         chromeWebSecurity: false,
-        >         video: false,
-        >         modifyObstructiveCode: false
-        >       },
-        >       spec: specString
-        >     })
-        >   }
-        > }
+        webpack.dev.conf.js
+        
+        const tdd = require('tdd-webpack-plugin')
+        const cypress = require('cypress')
+        
+        class CypressTDDPlugin extends tdd.TestDrivenDevPlugin {
+          test(specs) {
+            // specs is an iterator
+            // options accessible through this.options
+            let specString = [...specs].join(',')
+            if (!specString) {
+              specString = `**/${this.options.matchSpecs}`
+            }
+            cypress.run({
+              reporter: 'min',
+              config: {
+                baseUrl: this.options.baseUrl,
+                chromeWebSecurity: false,
+                video: false,
+                modifyObstructiveCode: false
+              },
+              spec: specString
+            })
+          }
+        }
         >
 
 Under plugins options, add the instance
 
-        > plugins: [
-        >   ........
-        >   new CypressTDDPlugin({
-        >     base: resolve('./src'),
-        >     baseUrl: 'http://localhost:8080',
-        >     testFolder: 'test',
-        >     matchSpecs: '*.spec.js'
-        >   })
-        > ]
+        plugins: [
+          ........
+          new CypressTDDPlugin({
+            base: resolve('./src'),
+            baseUrl: 'http://localhost:8080',
+            testFolder: 'test',
+            matchSpecs: '*.spec.js'
+          })
+        ]
 
 
 Configuration
