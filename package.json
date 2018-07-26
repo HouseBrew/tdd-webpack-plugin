@@ -12,11 +12,11 @@
     "url": "git@housebrew.github.com:HouseBrew/cypress-webpack-plugin.git"
   },
   "dependencies": {
-    "cypress": "^3.x",
     "directory-exists": "^2.x",
     "relative": "^3.x"
   },
   "devDependencies": {
+    "cypress": "^3.x",
     "@types/webpack": "^4.4.7",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
