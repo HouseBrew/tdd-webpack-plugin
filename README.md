@@ -19,7 +19,7 @@ It will help you, once changed src/modules/someModule/index.js, runs all the tes
 
 Installation
 ============
-        > $ npm install --save-dev tdd-webpack-plugin
+        $ npm install --save-dev tdd-webpack-plugin
 
 In webpack config file, extend the TestDrivenDevPlugin class, provide a test function.
 
@@ -52,7 +52,6 @@ The following is the implementation of tdd webpack plugin integrated with cypres
             })
           }
         }
-        >
 
 Under plugins options, add the instance
 
