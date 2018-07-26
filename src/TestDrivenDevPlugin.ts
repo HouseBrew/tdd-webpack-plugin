@@ -30,9 +30,6 @@ abstract class TestDrivenDevPlugin {
 
     compiler.hooks.emit.tap('CypressWebpackPlugin', (compilation) => {
       const changedFiles = this.getChangedFiles(compilation.fileTimestamps)
-      // if (!changedFiles.length) {
-      //   this.test()
-      // }
       const specs = this.getSpecs(changedFiles)
       this.test(specs)
       this.prevTimestamps = compilation.fileTimestamps
@@ -55,6 +52,7 @@ abstract class TestDrivenDevPlugin {
         if (testFolderExist) {
           const match = `${testFolderPath}/${this.options.matchSpecs}`
           yield relative(this.options.base, match)
+          break // only test the nearest parent's test folder
         }
       }
     }

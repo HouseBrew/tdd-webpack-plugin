@@ -1,7 +1,7 @@
 {
-  "name": "cypress-webpack-plugin",
-  "version": "0.0.6",
-  "description": "run cypress test after webpack tasks",
+  "name": "tdd-webpack-plugin",
+  "version": "0.0.1",
+  "description": "run minimal set of unit tests on build under webpack watch",
   "main": "dist/main.js",
   "module": "src/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@housebrew.github.com:HouseBrew/cypress-webpack-plugin.git"
+    "url": "git@github.com:HouseBrew/tdd-webpack-plugin.git"
   },
   "dependencies": {
     "directory-exists": "^2.x",
